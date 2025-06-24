@@ -1,50 +1,71 @@
-# Welcome to your Expo app 👋
+# 🗺️ Task 2 – Place Finder & Route Drawer (React Native)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This React Native application allows users to search for a **Start** and **End** location using live search powered by the **OneMap API**, fetch the driving route using **OSRM Routing API**, and draw the path visually on an interactive map using **GeoJSON**.
 
-## Get started
+---
 
-1. Install dependencies
+## ✅ Features
 
-   ```bash
-   npm install
-   ```
+- 📍 **Live Location Search**
+  - Powered by OneMap Singapore API
+  - Displays a list of matching results as the user types
+- ✍️ **Interactive Route Input**
+  - Two fields: Start and End points
+  - Select location via a search screen
+- 🛣️ **Route Fetching**
+  - Route is fetched using [OSRM](http://project-osrm.org/) API
+- 🗺️ **Map Visualization**
+  - Route is displayed on the map with zoom-to-fit using GeoJSON
+- 🔁 **Multi-Screen Flow**
+  - Input screen → Search screen → Route Map screen
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 📽️ Demo
 
-In the output, you'll find options to open the app in a
+> 👉 Available in the /assets directory  : https://github.com/Kapil619/PlaceFinder_RouteDrawer/blob/master/assets/placefinder.mp4
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🔧 Tech Stack
 
-## Get a fresh project
+- React Native (via Expo)
+- Expo Router
+- TypeScript
+- react-native-maps
+- react-native-svg
+- OneMap Search API
+- OSRM Routing API
 
-When you're ready, run:
+---
 
-```bash
-npm run reset-project
-```
+## 🧪 How It Works
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Screen 1: Route Input
 
-## Learn more
+- Two input fields: Start Point and End Point
+- On tap, user is navigated to a **search screen**
 
-To learn more about developing your project with Expo, look at the following resources:
+### Screen 2: Live Search
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- As the user types, fetch suggestions using: OneMap Singapore API
+- - Selecting a result sends the chosen coordinates back to the Route Input screen
 
-## Join the community
+### Screen 1 (continued)
 
-Join our community of developers creating universal apps.
+- Once both locations are filled, a **"Draw Route"** button appears
+- On tap, makes a GET request to OSRM Routing API
+- Navigates to map screen with fetched route
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### Screen 3: Route Map
+
+- Displays the fetched route using `react-native-maps` and `react-native-svg`
+- Zooms and fits the route using coordinates
+---
+
+## 📁 Project Structure
+/app<br>
+├── index.tsx      # Route Input screen <br>
+├── search.tsx     # Location Search screen<br>
+├── route-map.tsx  # Route display on map<br>
+└── _layout.tsx    # Stack navigation<br>
